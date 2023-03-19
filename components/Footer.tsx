@@ -37,9 +37,9 @@ export default function Footer() {
                     </svg>
                 </Link>
                 <Link
-                    href="https://github.com/gyurisc/summarizer-tool"
+                    href="https://github.com/gyurisc/TeacherGPT"
                     className="group"
-                    aria-label="Meeting Summarizer repo on GitHub"
+                    aria-label="https://github.com/gyurisc/TeacherGPT"
                 >
                     <svg
                         aria-hidden="true"

@@ -1,6 +1,6 @@
 # Meeting Summarizer Tool
 
-This tool helps you to summarize transcribed meetings and create action points. 
+This tool helps you to improve your english by fixing your mistakes and recommending improvements to your text. 
 
 Inspiration from https://github.com/Nutlope/twitterbio
 
@@ -21,7 +21,7 @@ How to use:
 cp .env.example .env
 ``` 
 
-5. Run the summarizer
+5. Run the app
 
 ```bash
 npm run dev

@@ -47,32 +47,32 @@ const Home: NextPage = () => {
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl flex-col pt-8 sm:pt-12">
       <Head>
-        <title>Meeting Summarizer</title>
+        <title>Improve your English</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
         <a
           className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
-          href="https://github.com/gyurisc/summarizer-tool"
+          href="https://github.com/gyurisc/TeacherGPT"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Github />
+
           <p>Star on GitHub</p>
         </a>
         <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">
-          Generate your meeting summaries and todos using chatGPT
+          Improve your English using chatGPT
         </h1>
-        <p className="text-slate-500 mt-5">Countless summaries generated so far.</p>
+        <p className="text-slate-500 mt-5">We helped 34,567 students so far.</p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
-            <p className="text-left font-medium">Copy the meeting transcript that needs to be summarize</p>
+            <p className="text-left font-medium">Copy your text that needs to be improved.</p>
           </div>
           <textarea
             className="w-full rounded-md border border-gray-300 shadow-sm p-4 focus:border-black focus:ring-black my-5"
 
-            placeholder="Paste your meeting or text that you want to summarize"
+            placeholder="Paste your text that you want to improve"
             rows={4}
             value={textInput}
             onChange={(e) => setTextInput(e.target.value)}
@@ -81,9 +81,9 @@ const Home: NextPage = () => {
         {!busy && (
           <button
             className="bg-black text-white px-6 py-3 rounded-md mt-5 hover:bg-gray-900 transition-colors"
-            onClick={(e) => generateSummary(e)}
+            onClick={(e) => generateImprovedText(e)}
           >
-            Generate Summary
+            Improve My Text
           </button>
         )}
         {busy && (

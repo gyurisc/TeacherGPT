@@ -2,10 +2,10 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
 
-  let description = "Summarize Meetings and generate todos in seconds.";
+  let description = "Let TeacherGPT improve your written English in seconds.";
   let ogimage = "";
   let sitename = "DOMAIN COMES HERE";
-  let title = "Meeting Sumarizer";
+  let title = "Teach GPT to help you with your English";
 
   return (
     <Html lang="en">
