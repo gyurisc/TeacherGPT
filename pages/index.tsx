@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
   const [busy, setBusy] = useState(false);
 
-  async function generateSummary(event: any) {
+  async function generateImprovedText(event: any) {
     event.preventDefault();
 
     setResult("");
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
     console.log('start call');
 
-    const response = await fetch("/api/summarize", {
+    const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
