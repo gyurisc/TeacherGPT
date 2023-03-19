@@ -18,26 +18,50 @@ const Home: NextPage = () => {
 
   const [busy, setBusy] = useState(false);
 
+  const prompt = `I want you to act as an English translator, spelling corrector, and improver. I will speak to you in my basic English and you will provide recommendations on how to improve my English and fix any grammar errors in my text. Also, provide me a list of recommendations that would make my text to be the same as a native speaker. No need to rewrite my text such give me a list of improvements and fixes. My text is ${textInput}`;
+
   async function generateImprovedText(event: any) {
     event.preventDefault();
 
     setResult("");
     setBusy(true);
 
-    console.log('start call');
-
+    console.log(prompt);
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: textInput }),
+      body: JSON.stringify({ prompt }),
     });
 
-    const data = await response.json();
+    if (!response.ok) {
+      console.log('error', response.statusText);
+      throw new Error(response.statusText);
+    }
 
-    setResult(data.result);
+    // data is ReadableStream
+    const data = response.body;
+    if (!data) {
+      console.log('no data');
+      return
+    };
+
+    const reader = data.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    console.log('received stream')
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
+      console.log('chunkValue', chunkValue);
+      setResult((prev) => prev + chunkValue);
+    }
+
     setBusy(false);
+
   }
 
   async function copyToClipboard() {
@@ -67,11 +91,17 @@ const Home: NextPage = () => {
         <p className="text-slate-500 mt-5">We helped 34,567 students so far.</p>
         <div className="max-w-xl w-full">
           <div className="flex mt-10 items-center space-x-3">
+            <Image
+              src="/1-black.png"
+              width={30}
+              height={30}
+              alt="1 icon"
+              className="mb-5 sm:mb-0"
+            />
             <p className="text-left font-medium">Copy your text that needs to be improved.</p>
           </div>
           <textarea
             className="w-full rounded-md border border-gray-300 shadow-sm p-4 focus:border-black focus:ring-black my-5"
-
             placeholder="Paste your text that you want to improve"
             rows={4}
             value={textInput}
