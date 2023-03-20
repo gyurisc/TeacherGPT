@@ -26,7 +26,6 @@ const Home: NextPage = () => {
     setResult("");
     setBusy(true);
 
-    console.log(prompt);
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -43,7 +42,6 @@ const Home: NextPage = () => {
     // data is ReadableStream
     const data = response.body;
     if (!data) {
-      console.log('no data');
       return
     };
 
@@ -51,12 +49,10 @@ const Home: NextPage = () => {
     const decoder = new TextDecoder();
     let done = false;
 
-    console.log('received stream')
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       const chunkValue = decoder.decode(value);
-      console.log('chunkValue', chunkValue);
       setResult((prev) => prev + chunkValue);
     }
 

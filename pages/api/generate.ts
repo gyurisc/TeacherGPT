@@ -17,7 +17,6 @@ const handler = async (req: Request): Promise<Response> => {
         return new Response("No prompt in the request", { status: 400 });
     }
 
-    console.log('starting call');
     const payload: OpenAIStreamPayload = {
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: prompt }],
@@ -30,9 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
         n: 1,
     };
 
-    console.log('calling OpenAIStream');
     const stream = await OpenAIStream(payload);
-    console.log('got stream');
     return new Response(stream);
 };
 
