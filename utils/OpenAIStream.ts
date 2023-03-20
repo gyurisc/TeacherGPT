@@ -43,6 +43,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
         async start(controller) {
             // callback
             function onParse(event: ParsedEvent | ReconnectInterval) {
+                console.log('onParse', event);
                 if (event.type === "event") {
                     const data = event.data;
                     // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
@@ -52,6 +53,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
                     }
 
                     try {
+                        console.data('data', data);
                         const json = JSON.parse(data);
                         const text = json.choices[0].text;
                         const encoded = encoder.encode(text);
@@ -67,6 +69,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
                     } catch (e) {
                         // parse error 
+                        console.error('parse error', e);
                         controller.error(e);
                     }
                 }
