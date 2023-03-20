@@ -49,6 +49,7 @@ const Home: NextPage = () => {
     const decoder = new TextDecoder();
     let done = false;
 
+    console.log('received stream')
     while (!done) {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
