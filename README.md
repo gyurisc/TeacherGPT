@@ -1,4 +1,4 @@
-# Meeting Summarizer Tool
+# [EnglishTeacherGPT.com](https://englishteachergpt.com)
 
 This tool helps you to improve your english by fixing your mistakes and recommending improvements to your text. 
 
