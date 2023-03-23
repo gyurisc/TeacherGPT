@@ -2,6 +2,7 @@
 
 This tool helps you to improve your english by fixing your mistakes and recommending improvements to your text. 
 
+[![English Teacher GPT](./public/englishteacher_screenshot.png)](https://englishteachergpt.com)
 Inspiration from https://github.com/Nutlope/twitterbio
 
 How to use: 
